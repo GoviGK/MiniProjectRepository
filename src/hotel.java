@@ -9,7 +9,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
-
+///is it displaying
 public class hotel {
     static JLabel l,heading;
     static JPanel pan2;
@@ -31,65 +31,65 @@ public class hotel {
     hotel() {
     }
 
-void main_dial(){
-    log = new JDialog();
-    log.setBounds(570, 170, 400, 500);
+    void main_dial(){
+        log = new JDialog();
+        log.setBounds(570, 170, 400, 500);
 
-    ///-----BUTTONS---->>>
-    ButtonGroup g = new ButtonGroup();
-    submit = new JButton("LOGIN");
-    JRadioButton rb2 = new JRadioButton("User");
-    JRadioButton rb = new JRadioButton("Admin");
-    new_user = new JButton("REGISTER");
-    g.add(rb);g.add(rb2);
+        ///-----BUTTONS---->>>
+        ButtonGroup g = new ButtonGroup();
+        submit = new JButton("LOGIN");
+        JRadioButton rb2 = new JRadioButton("User");
+        JRadioButton rb = new JRadioButton("Admin");
+        new_user = new JButton("REGISTER");
+        g.add(rb);g.add(rb2);
 
-    ////-------LABELS---------
-    JLabel heading = new JLabel("HOTEL SEA HORIZON");   heading.setFont(new Font("Serif", Font.BOLD, 20));
-    JLabel n_label = new JLabel("Name");                n_label.setFont(new Font("TimesRoman", Font.BOLD, 15));
-    JLabel u_label = new JLabel("Username");            u_label.setFont(new Font("Courier", Font.BOLD, 15));
-    JLabel p_label = new JLabel("Password");            p_label.setFont(new Font("Courier", Font.BOLD, 15));
-
-
-
-
-    ///---------TEXTFIELDS------------
-     n_tf = new JTextField();
-     u_tf = new JTextField();
-     p_tf = new JTextField();
-
-
-    /////------SIZE AND POSITIONS---------
-    heading.setBounds(90, 30, 250, 20);
-    heading.setBackground(Color.cyan);
-
-    n_label.setBounds(80, 100, 100, 20);
-    n_tf.setBounds(160,100, 150, 20);
-
-    u_label.setBounds(80, 130, 100, 20);
-    u_tf.setBounds(160,130, 150, 20);
-
-    p_label.setBounds(80, 160, 100, 20);
-    p_tf.setBounds(160,160, 150, 20);
-
-    rb.setBounds(80,185, 100, 30);
-    rb2.setBounds(200,185, 100, 30);
-    submit.setBounds(80,235, 80, 20);
-    new_user.setBounds(200,235, 100, 20);
-
-
-    ///----Decoration--->>>
+        ////-------LABELS---------
+        JLabel heading = new JLabel("HOTEL SEA HORIZON");   heading.setFont(new Font("Serif", Font.BOLD, 20));
+        JLabel n_label = new JLabel("Name");                n_label.setFont(new Font("TimesRoman", Font.BOLD, 15));
+        JLabel u_label = new JLabel("Username");            u_label.setFont(new Font("Courier", Font.BOLD, 15));
+        JLabel p_label = new JLabel("Password");            p_label.setFont(new Font("Courier", Font.BOLD, 15));
 
 
 
-    ///-----New Registration Button Event-----------
-    new_user.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            log.dispose();
-            for_new();
 
-        }
-    });
+        ///---------TEXTFIELDS------------
+        n_tf = new JTextField();
+        u_tf = new JTextField();
+        p_tf = new JTextField();
+
+
+        /////------SIZE AND POSITIONS---------
+        heading.setBounds(90, 30, 250, 20);
+        heading.setBackground(Color.cyan);
+
+        n_label.setBounds(80, 100, 100, 20);
+        n_tf.setBounds(160,100, 150, 20);
+
+        u_label.setBounds(80, 130, 100, 20);
+        u_tf.setBounds(160,130, 150, 20);
+
+        p_label.setBounds(80, 160, 100, 20);
+        p_tf.setBounds(160,160, 150, 20);
+
+        rb.setBounds(80,185, 100, 30);
+        rb2.setBounds(200,185, 100, 30);
+        submit.setBounds(80,235, 80, 20);
+        new_user.setBounds(200,235, 100, 20);
+
+
+        ///----Decoration--->>>
+
+
+
+        ///-----New Registration Button Event-----------
+        new_user.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                log.dispose();
+                for_new();
+
+            }
+        });
 
         ///-----Log IN Button Event-----------
         submit.addActionListener(new ActionListener() {
@@ -107,23 +107,23 @@ void main_dial(){
 
                         try {
 
-                            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
+                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
                             PreparedStatement a_st = con.prepareStatement("Select * from admin");
 
                             ResultSet a_rs = a_st.executeQuery();
 
                             //////-------------------FOR ADMIN-------------------
-                        int cnt1=0;
-                        while(a_rs.next()){
+                            int cnt1=0;
+                            while(a_rs.next()){
 
-                            if((u_tf.getText().equals(a_rs.getString(2))) &&( p_tf.getText().equals(a_rs.getString(3))) && n_tf.getText().equals(a_rs.getString(1))){
-                           // for_admin();
-                            cnt1=1;
-                            break;
+                                if((u_tf.getText().equals(a_rs.getString(2))) &&( p_tf.getText().equals(a_rs.getString(3))) && n_tf.getText().equals(a_rs.getString(1))){
+                                    // for_admin();
+                                    cnt1=1;
+                                    break;
+                                }
+
+
                             }
-
-
-                        }
                             if(cnt1==1) {
 
                                 for_admin();
@@ -158,7 +158,8 @@ void main_dial(){
                     } else {
 
                         try {
-                            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
+
+                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
                             PreparedStatement a_st = con.prepareStatement("Select * from customer");
 
                             ResultSet a_rs = a_st.executeQuery();
@@ -183,22 +184,22 @@ void main_dial(){
 
 
 
-    ///-----Main DialogBox Components----------
-    log.add(n_tf);
-    log.add(n_label);
-    log.add(rb);
-    log.add(rb2);
-    log.add(heading);
-    log.add(submit);
-    log.add(p_tf);
-    log.add(p_label);
-    log.add(u_tf);
-    log.add(u_label);
-    log.add(new_user);
-    log.setLayout(null);
-    log.setVisible(true);
+        ///-----Main DialogBox Components----------
+        log.add(n_tf);
+        log.add(n_label);
+        log.add(rb);
+        log.add(rb2);
+        log.add(heading);
+        log.add(submit);
+        log.add(p_tf);
+        log.add(p_label);
+        log.add(u_tf);
+        log.add(u_label);
+        log.add(new_user);
+        log.setLayout(null);
+        log.setVisible(true);
 
-}
+    }
 
 
 //--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
@@ -207,12 +208,12 @@ void main_dial(){
 
 
     void for_admin(){
-         log.dispose();
-         adFrame = new JFrame("Admin"+" "+n_tf.getText());
-         adFrame.setBounds(0,0,500,500);
-         adFrame.getContentPane().setBackground(Color.white);
-         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-         adFrame.setSize(screenSize.width, screenSize.height);
+        log.dispose();
+        adFrame = new JFrame("Admin"+" "+n_tf.getText());
+        adFrame.setBounds(0,0,500,500);
+        adFrame.getContentPane().setBackground(Color.white);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        adFrame.setSize(screenSize.width, screenSize.height);
 
         ImageIcon img = new ImageIcon("C:\\Users\\Govinda\\Desktop\\bg\\goku.jpg");
         JLabel bg = new JLabel("",img,JLabel.CENTER);
@@ -276,7 +277,7 @@ void main_dial(){
         cust.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                 custs();
+                custs();
             }
         });
         logn.addActionListener(new ActionListener() {
@@ -338,13 +339,13 @@ void main_dial(){
 
     }
 
-//----Displaying bookings---------
+    //----Displaying bookings---------
     void bookdata(){
 
         String []col={"Name","Person(s)","Tables","Food","Quantity","Date And Time","Status"};
         m = new DefaultTableModel();
         m.setColumnIdentifiers(col);
-       JTable t = new JTable();
+        JTable t = new JTable();
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)t.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(SwingConstants.LEFT);
 
@@ -370,7 +371,8 @@ void main_dial(){
         sub.setBounds(20,190,100,20);
 
         try {
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             PreparedStatement st1 = con.prepareStatement("Select * from booking");
             ResultSet rs = st1.executeQuery();
 
@@ -429,26 +431,25 @@ void main_dial(){
     void addAP(JTextField tf_nm,JTextField tf_fd){
 
         try{
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             CallableStatement stmt = con.prepareCall("{ call upSTATUS(?,?) }");
 
 
-           stmt.setString(1, tf_nm.getText());
+            stmt.setString(1, tf_nm.getText());
             stmt.setString(2, tf_fd.getText());
             rowinserted = stmt.executeUpdate();
             dilog(11);
 
 
         }catch (Exception e){
-        dilog(12);
+            dilog(12);
             System.out.println(e);
 
         }
     }
     void addrej(JTextField tf_nm,JTextField tf_fd){
         try{
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
-            //Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "Govinda@20");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             CallableStatement stmt = con.prepareCall("{ call upSTATUS_REJ(?,?) }");
 
 
@@ -467,11 +468,14 @@ void main_dial(){
 
     }
 
-///-------Display Approved Bookings---
+    ///-------Display Approved Bookings---
     void aprBookings(){
+        BookingTest BT = new BookingTest();
+        BT.aprBookings(adFrame);
+        /*
         /// display table where status = approved
         String []col={"Name","Person(s)","Tables","Food","Quantity","Date And Time","Status"};
-       DefaultTableModel m1 = new DefaultTableModel();
+        DefaultTableModel m1 = new DefaultTableModel();
         m1.setColumnIdentifiers(col);
 
         JTable t = new JTable();
@@ -479,7 +483,8 @@ void main_dial(){
         renderer.setHorizontalAlignment(SwingConstants.CENTER);
 
         try{
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             PreparedStatement st1 = con.prepareStatement("Select * from booking WHERE Status='Approved'");
             ResultSet rs = st1.executeQuery();
 
@@ -509,9 +514,11 @@ void main_dial(){
         pane.setBounds(100, 230,1000, 500);
         pane.setBackground(adFrame.getBackground());
         adFrame.add(pane);
+
+        */
     }
 
-///-------Display Rejcted Bookings---
+    ///-------Display Rejcted Bookings---
     void rejBookings(){
         /// display table where status = rejected
         String []col={"Name","Person(s)","Tables","Food","Quantity","Date And Time","Status"};
@@ -523,7 +530,8 @@ void main_dial(){
         renderer.setHorizontalAlignment(SwingConstants.CENTER);
 
         try{
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             PreparedStatement st1 = con.prepareStatement("Select * from booking WHERE Status='Rejected' ");
             ResultSet rs = st1.executeQuery();
 
@@ -555,50 +563,51 @@ void main_dial(){
         adFrame.add(pane);
     }
 
-void pendBooking(){
+    void pendBooking(){
 
-   /// display table where status = pending
-    String []col={"Name","Person(s)","Tables","Food","Quantity","Date And Time","Status"};
-    DefaultTableModel m1 = new DefaultTableModel();
-    m1.setColumnIdentifiers(col);
+        /// display table where status = pending
+        String []col={"Name","Person(s)","Tables","Food","Quantity","Date And Time","Status"};
+        DefaultTableModel m1 = new DefaultTableModel();
+        m1.setColumnIdentifiers(col);
 
-    JTable t = new JTable();
-    DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)t.getTableHeader().getDefaultRenderer();
-    renderer.setHorizontalAlignment(SwingConstants.CENTER);
+        JTable t = new JTable();
+        DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)t.getTableHeader().getDefaultRenderer();
+        renderer.setHorizontalAlignment(SwingConstants.CENTER);
 
-    try{
-        Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
-        PreparedStatement st1 = con.prepareStatement("Select * from booking WHERE Status='Pending'");
-        ResultSet rs = st1.executeQuery();
+        try{
 
-        while(rs.next()){
-            m1.addRow(new Object[]{
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
+            PreparedStatement st1 = con.prepareStatement("Select * from booking WHERE Status='Pending'");
+            ResultSet rs = st1.executeQuery();
 
-                    rs.getString(1),
-                    rs.getInt(2),
-                    rs.getInt(3),
-                    rs.getString(4),
-                    rs.getInt(5),
-                    rs.getString(6),
-                    rs.getString(7)
-            });
+            while(rs.next()){
+                m1.addRow(new Object[]{
+
+                        rs.getString(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getString(7)
+                });
+            }
+
+
+        }
+        catch(Exception e){
+            System.out.println(e);
         }
 
+        t.setBackground(Color.white);
+
+        t.setModel(m1);
+        JScrollPane pane = new JScrollPane(t);
+        pane.setBounds(100, 230,1000, 500);
+        pane.setBackground(adFrame.getBackground());
+        adFrame.add(pane);
 
     }
-    catch(Exception e){
-        System.out.println(e);
-    }
-
-    t.setBackground(Color.white);
-
-    t.setModel(m1);
-    JScrollPane pane = new JScrollPane(t);
-    pane.setBounds(100, 230,1000, 500);
-    pane.setBackground(adFrame.getBackground());
-    adFrame.add(pane);
-
-}
 
 //----Displaying customers---------
 
@@ -613,7 +622,8 @@ void pendBooking(){
         renderer1.setHorizontalAlignment(SwingConstants.CENTER);
 
         try{
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             PreparedStatement st1 = con.prepareStatement("Select * from billing");
             ResultSet rs = st1.executeQuery();
 
@@ -644,14 +654,15 @@ void pendBooking(){
     void menucard(){
 
         String [] col = {"Food","Quantity","Price"};
-       DefaultTableModel mod = new DefaultTableModel();
+        DefaultTableModel mod = new DefaultTableModel();
         mod.setColumnIdentifiers(col);
-       JTable tab = new JTable();
+        JTable tab = new JTable();
 
 
 
         try{
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             PreparedStatement st1 = con.prepareStatement("Select * from menucard");
             ResultSet rs = st1.executeQuery();
 
@@ -676,7 +687,7 @@ void pendBooking(){
         pane.setBounds(100, 230,1000, 500);
         pane.setBackground(adFrame.getBackground());
 
-       JPanel pan2 = new JPanel();
+        JPanel pan2 = new JPanel();
 
         JLabel ndish = new JLabel("Add new Dish");
         JLabel dnm = new JLabel("Name");
@@ -729,29 +740,29 @@ void pendBooking(){
 
     }
 
+//////////------------ADDING NEW DISH METHOD------------/////////////////
+    void addish(JTextField dnm_tf, JTextField prc_tf, JTextField quant_tf){
 
-void addish(JTextField dnm_tf, JTextField prc_tf, JTextField quant_tf){
-
-try{
-    Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
-    CallableStatement stmt = con.prepareCall("{ call addish(?,?,?) }");
-
-
-    stmt.setString(1, dnm_tf.getText());
-    stmt.setInt(2,Integer.parseInt(quant_tf.getText()));
-    stmt.setInt(3, Integer.parseInt(prc_tf.getText()));
-
-    rowinserted = stmt.executeUpdate();
-    dilog(8);
-
-}catch(Exception e){
-
-    System.out.println(e);
-    dilog(4);
-}
+        try{
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
+            CallableStatement stmt = con.prepareCall("{ call addish(?,?,?) }");
 
 
-}
+            stmt.setString(1, dnm_tf.getText());
+            stmt.setInt(2,Integer.parseInt(quant_tf.getText()));
+            stmt.setInt(3, Integer.parseInt(prc_tf.getText()));
+
+            rowinserted = stmt.executeUpdate();
+            dilog(8);
+
+        }catch(Exception e){
+
+            System.out.println(e);
+            dilog(4);
+        }
+
+
+    }
 
 
 //--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
@@ -792,7 +803,7 @@ try{
 
 
         try{
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             CallableStatement cstmt = con.prepareCall("{call tab(?)}");
 
             cstmt.registerOutParameter(1, Types.INTEGER);
@@ -807,7 +818,8 @@ try{
         }
 
         try{
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             PreparedStatement st1 = con.prepareStatement("Select * from menucard");
             ResultSet rs = st1.executeQuery();
 
@@ -856,9 +868,9 @@ try{
         });
 
 
-    int b=100-a;
-    tf_avail_count.setText(Integer.toString(b));
-    logout.setForeground(Color.RED);
+        int b=100-a;
+        tf_avail_count.setText(Integer.toString(b));
+        logout.setForeground(Color.RED);
         usbackPane.add(tab_count);
         usbackPane.add(avail_count);
         usbackPane.add(tf_tab_count);
@@ -874,8 +886,8 @@ try{
         logout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            usFrame.dispose();
-            main_dial();
+                usFrame.dispose();
+                main_dial();
 
             }
         });
@@ -1008,8 +1020,7 @@ try{
 
 
         try{
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
-            //Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "Govinda@20");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             PreparedStatement st1 = con.prepareStatement("Select * from menucard");
             CallableStatement cstmt = con.prepareCall("{call bill(?,?)}");
 
@@ -1065,13 +1076,12 @@ try{
 
 
 
-///bill payment
+    ///bill payment
     void paybill(float bl, JTextField u_tf, JLabel date,JLabel tf_food1,JLabel tf_ppl1,JLabel tf_quant1,JLabel tf_tabel1){
 
 
         try{
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
-            //Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "Govinda@20");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
 
             CallableStatement stmt = con.prepareCall("{ call PayBill(?,?,?) }");
 
@@ -1092,8 +1102,7 @@ try{
 
         }
         try {
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
-            //Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "Govinda@20");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             PreparedStatement stmt1 = con.prepareStatement("insert into booking(Name, People, Tables, Food, Quantity, Date_Time) values(?, ?, ?, ?, ?, ?)");
 
             stmt1.setString(1,u_tf.getText());
@@ -1117,21 +1126,21 @@ try{
 
 
 
-        }
+    }
 
     void myBook(JFrame usFrame){
 
 
         String []col={"Name","People","Tables","Food","Quantity","Date And Time","Status"};
-       DefaultTableModel m = new DefaultTableModel();
+        DefaultTableModel m = new DefaultTableModel();
         m.setColumnIdentifiers(col);
         JTable t = new JTable();
         DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)t.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(SwingConstants.CENTER);
 
         try{
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
-            ///Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "Govinda@20");
+
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
 
             PreparedStatement st1 = con.prepareStatement("Select * from booking");
             ResultSet rs = st1.executeQuery();
@@ -1160,7 +1169,7 @@ try{
         t.setModel(m);
         JScrollPane pane = new JScrollPane(t);
         pane.setBounds(100, 230,800, 500);
-       // pane.setBackground(usFrame.getBackground());
+        // pane.setBackground(usFrame.getBackground());
         usFrame.add(pane);
 
 
@@ -1172,30 +1181,30 @@ try{
     ////-------------------Main Function-----------------
 
     public static void main(String args[]){
-  hotel h = new hotel();
-  h.main_dial();
+        hotel h = new hotel();
+        h.main_dial();
 
-       submit.addMouseListener(new java.awt.event.MouseAdapter(){
-           public void mouseEntered(java.awt.event.MouseEvent evt) {
-               submit.setBackground(Color.WHITE);
-           }
+        submit.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                submit.setBackground(Color.WHITE);
+            }
 
-           public void mouseExited(java.awt.event.MouseEvent evt) {
-               submit.setBackground(UIManager.getColor("control"));
-           }
-       });
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                submit.setBackground(UIManager.getColor("control"));
+            }
+        });
 
-       new_user.addMouseListener(new java.awt.event.MouseAdapter(){
-           public void mouseEntered(java.awt.event.MouseEvent evt) {
-               new_user.setBackground(Color.WHITE);
-           }
+        new_user.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                new_user.setBackground(Color.WHITE);
+            }
 
-           public void mouseExited(java.awt.event.MouseEvent evt) {
-               new_user.setBackground(UIManager.getColor("control"));
-           }
-       });
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                new_user.setBackground(UIManager.getColor("control"));
+            }
+        });
 
-   }
+    }
 
 //--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
     ////-------------------Registration window-----------------
@@ -1227,7 +1236,7 @@ try{
         heading.setFont(new Font("Courier", Font.BOLD, 20));
 
         ///---------TEXT FIELDS-------------
-       JTextField Name_tf = new JTextField();
+        JTextField Name_tf = new JTextField();
         JTextField u_tfr = new JTextField();
         JTextField p_tfr = new JTextField();
 
@@ -1295,16 +1304,18 @@ try{
 
 
 //--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-                            ///Registration Function ------->>>>
+    ///Registration Function ------->>>>
 //--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
     void insert_admin(JTextField Name_tf,JTextField u_tfr,JTextField p_tfr ){
-       int flag_a = 0;
+        int flag_a = 0;
+        user_N_admin_TEST uNa_test = new user_N_admin_TEST();
+       uNa_test.insert_admin(Name_tf,u_tfr,p_tfr,flag_u,rowinserted);
 
+       /*
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
-           // Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "Govinda@20");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL=true", "root", "root123");
             PreparedStatement st = con.prepareStatement("insert into admin(Name, Username, Password) values(?, ?, ?)");
             PreparedStatement st2 = con.prepareStatement("SELECT * FROM admin");
             ResultSet rs = st2.executeQuery();
@@ -1330,7 +1341,7 @@ try{
 
 
 
-             if(flag_a==0) {
+            if(flag_a==0) {
 
                 st.setString(1, Name_tf.getText());
                 st.setString(2, u_tfr.getText());
@@ -1354,7 +1365,7 @@ try{
 
             else {
                 ///-----invalid
-               dilog(7);
+                dilog(7);
 
             }
 
@@ -1362,21 +1373,20 @@ try{
             System.out.println(e);
         }
 
+        */
+
     }
 
     void insert_user(JTextField Name_tf,JTextField u_tfr,JTextField p_tfr ){
 
+        user_N_admin_TEST uNa_test = new user_N_admin_TEST();
+        uNa_test.insert_user(Name_tf,u_tfr,p_tfr,rowinserted);
 
-        int flag_u = 0;
 
-        System.out.println(Name_tf.getText());
-        System.out.println(u_tfr.getText());
-        System.out.println(p_tfr.getText());
-
+        /*
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("sql12.freemysqlhosting.net/sql12358156", "sql12358156", "LrfJMIu8r6");
-           // Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL = true", "root", "Govinda@20");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel?useSSL = true", "root", "root123");
             PreparedStatement st1 = con.prepareStatement("insert into customer(Name,Username, Password) values(?, ?, ?)");
             PreparedStatement st2 = con.prepareStatement("select * from customer");
             ResultSet rs = st2.executeQuery();
@@ -1388,25 +1398,25 @@ try{
 
             else if(flag_u!=1) {
 
-                 System.out.println(flag_u);
-                     while (rs.next()) {
+                System.out.println(flag_u);
+                while (rs.next()) {
 
-                         if ((u_tfr.getText()).equals(rs.getString(2)) ||
-                             (p_tfr.getText()).equals(rs.getString(3)) ||
-                             (Name_tf.getText().equals(rs.getString(1)))) {
-                               flag_u = 3;
-                         }
+                    if ((u_tfr.getText()).equals(rs.getString(2)) ||
+                            (p_tfr.getText()).equals(rs.getString(3)) ||
+                            (Name_tf.getText().equals(rs.getString(1)))) {
+                        flag_u = 3;
+                    }
 
-                     }
+                }
             }
 
 
-              if(flag_u==0) {
+            if(flag_u==0) {
 
-                 st1.setString(1,Name_tf.getText());
-                 st1.setString(2,u_tfr.getText());
-                 st1.setString(3,p_tfr.getText());
-                 rowinserted = st1.executeUpdate();
+                st1.setString(1,Name_tf.getText());
+                st1.setString(2,u_tfr.getText());
+                st1.setString(3,p_tfr.getText());
+                rowinserted = st1.executeUpdate();
                 System.out.println("Success");
                 flag_u = 2;
             }
@@ -1435,7 +1445,7 @@ try{
 
         }catch (Exception e1){
             System.out.println(e1);
-        }
+        }*/
 
 
     }
@@ -1525,7 +1535,7 @@ try{
 
             interrupt.add(aprStatus);
         }
-            interrupt.setLayout(null);
-            interrupt.setVisible(true);
+        interrupt.setLayout(null);
+        interrupt.setVisible(true);
     }
 }
